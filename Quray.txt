@@ -1,0 +1,28 @@
+CREATE DATABASE test;
+CREATE TABLE student(id INT NOT NULL AUTO_INCREMENT ,
+NAME VARCHAR(30),batch VARCHAR(10),cgpa FLOAT,
+PRIMARY KEY(id));
+SELECT * FROM student;
+INSERT INTO student(NAME ,batch,cgpa)
+VALUES ("sristy",'56A',4.00);
+SELECT * FROM student;
+CREATE TABLE student_ditals(address VARCHAR(20),std_id INT,
+FOREIGN KEY (std_id) REFERENCES student(id));
+SELECT * FROM student_ditals;
+INSERT INTO student_ditals(address,std_id)
+VALUES ('uttara',1);
+SELECT * FROM student_ditals;
+
+SELECT * FROM student,student_ditals
+WHERE student.id=student_ditals.std_id;
+
+SELECT * FROM student INNER JOIN 
+student_ditals ON  student.id=student_ditals.std_id;
+
+SELECT * FROM student
+LEFT JOIN student_ditals
+ON student.id = student_ditals.std_id;
+
+SELECT * FROM student
+RIGHT JOIN student_ditals
+ON student.id = student_ditals.std_id;
